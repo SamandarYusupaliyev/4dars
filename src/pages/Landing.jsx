@@ -1,9 +1,10 @@
+import Hero from "../components/Hero"
+
 function Landing() {
-    return (
-      <div>
-         <h1>Landing</h1>
-      </div>
-    )
-  }
-  
-  export default Landing
+  return (
+    <div className="align-content pt-10">
+      <Hero/>
+    </div>
+  )
+}
+export default Landing
