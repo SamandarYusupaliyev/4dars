@@ -43,8 +43,10 @@ function Navbar() {
           </ul>
           </div>
        </div>
-       <div className="navbar-center">
-          <NavLinks className="menu menu-horizontal"/>
+       <div className="navbar-center hidden lg:flex">
+          <ul className="menu menu-horizontal">
+           <NavLinks/>
+          </ul>
        </div>
        <div className="navbar-end">
           {/* THEMEICON */}
