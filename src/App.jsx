@@ -6,6 +6,13 @@ About,HomeLayout,Error,Checkout,Cart,
 Orders,Products,Login,Landing,SingleRroduct,
 Register} from "./pages"
 
+
+// components
+import { ErrorElement } from "./components"
+
+// Loaders
+import {loader as LandingLoader} from "./pages/Landing"
+
 function App() {
   const routers =createBrowserRouter([
     {
@@ -15,7 +22,9 @@ function App() {
       children:[
         {
           index:true,
-          element:<Landing/>
+          element:<Landing/>,
+          errorElement:<ErrorElement/>,
+          loader:LandingLoader,
         },
         {
           path:"/about",
