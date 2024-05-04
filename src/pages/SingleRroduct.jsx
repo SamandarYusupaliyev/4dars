@@ -2,8 +2,8 @@ import { useLoaderData , Link } from "react-router-dom"
 import { customFetch, formatPrice } from "../utils"
 import { useState } from "react"
 
-export const loader = async (params) => {
-  const request = await customFetch(`/products/${params.params.id}`);
+export const loader = async ({params}) => {
+  const request = await customFetch(`/products/${params.id}`);
   return {product: request.data.data};
 }
 
