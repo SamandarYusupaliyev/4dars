@@ -1,71 +1,79 @@
-import { createBrowserRouter,RouterProvider } from "react-router-dom"
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 // pages
 import {
-About,HomeLayout,Error,Checkout,Cart,
-Orders,Products,Login,Landing,SingleRroduct,
-Register} from "./pages"
-
+  About,
+  HomeLayout,
+  Error,
+  Checkout,
+  Cart,
+  Orders,
+  Products,
+  Login,
+  Landing,
+  SingleProduct,
+  Register,
+} from "./pages";
 
 // components
-import { ErrorElement } from "./components"
+import { ErrorElement } from "./components";
 
 // Loaders
-import {loader as LandingLoader} from "./pages/Landing"
-import {loader as SingleProductLoader} from "./pages/SingleRroduct"
+import { loader as LandingLoader } from "./pages/Landing";
+import { loader as SingleProductLoader } from "./pages/SingleProduct";
 
 function App() {
-  const routers =createBrowserRouter([
+  const routers = createBrowserRouter([
     {
-      path:"/",
-      element:<HomeLayout/>,
-      errorElement:<Error/>,
-      children:[
+      path: "/",
+      element: <HomeLayout />,
+      errorElement: <Error />,
+      children: [
         {
-          index:true,
-          element:<Landing/>,
-          errorElement:<ErrorElement/>,
-          loader:LandingLoader,
+          index: true,
+          element: <Landing />,
+          errorElement: <ErrorElement />,
+          loader: LandingLoader,
         },
         {
-          path:"/about",
-          element:<About/>,
+          path: "/about",
+          element: <About />,
         },
         {
-          path:"/products",
-          element:<Products/>,
+          path: "/products",
+          element: <Products />,
         },
         {
-          path:"/product/:id",
-          element:<SingleRroduct/>,
-          loader:SingleProductLoader,
+          path: "/product/:id",
+          element: <SingleProduct/>,
+          loader: SingleProductLoader,
         },
         {
-          path:"/cart",
-          element:<Cart/>,
+          path: "/cart",
+          element: <Cart />,
         },
         {
-          path:"/checkout",
-          element:<Checkout/>,
+          path: "/checkout",
+          element: <Checkout />,
         },
         {
-          path:"/orders",
-          element:<Orders/>,
+          path: "/orders",
+          element: <Orders />,
         },
       ],
     },
     {
-      path:"/login",
-      element:<Login/>,
-      errorElement:<Error/>,
+      path: "/login",
+      element: <Login />,
+      errorElement: <Error />,
     },
     {
-      path:"register",
-      element:<Register/>,
-      errorElement:<Error/>,
+      path: "register",
+      element: <Register />,
+      errorElement: <Error />,
     },
-  ])
-  return <RouterProvider router={routers}/>
+  ]);
+  return <RouterProvider router={routers} />;
 }
 
-export default App
+export default App;
