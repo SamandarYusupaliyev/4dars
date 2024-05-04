@@ -44,7 +44,7 @@ function App() {
           element: <Products />,
         },
         {
-          path: "/product/:id",
+          path: "/products/:id",
           element: <SingleProduct/>,
           loader: SingleProductLoader,
         },
