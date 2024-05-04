@@ -1,12 +1,9 @@
 function Cart() {
   return (
-    <div>
-      <h1>Cart</h1>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-        Blanditiis, quidem repellendus quas iure consequuntur voluptatibus odit incidunt expedita repellat error veritatis molestiae iste obcaecati asperiores rem, pariatur voluptas voluptate velit debitis magnam officia mollitia excepturi, labore architecto!
-        Facere, quo error fugit dignissimos iure ullam recusandae tempore soluta itaque qui est!
-      </p>
+    <div className="align-content py-20">
+      <div className="border-b border-base-300 pb-5">
+        <h2 className="text-3xl font-medium tracking-wider capitalize">Your Cart Is Empty</h2>
+      </div>
     </div>
   )
 }
