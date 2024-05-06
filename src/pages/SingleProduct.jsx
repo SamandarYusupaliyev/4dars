@@ -1,5 +1,5 @@
 import { useLoaderData , Link } from "react-router-dom"
-import { customFetch, formatPrice } from "../utils"
+import { customFetch, formatPrice, generateAmountOptions } from "../utils"
 import { useState } from "react"
 
 export const loader = async ({params}) => {
