@@ -1,4 +1,4 @@
-import Filter from "../components/Filter";
+import Filters from "../components/Filters";
 import ProductsContainer from "../components/ProductsContainer";
 import { customFetch } from "../utils";
 const url = '/products'
@@ -13,7 +13,7 @@ export const loader = async ({ request }) => {
 const Products = () => {
   return(
   <div className="mt-14">
-    <Filter />
+    <Filters/>
     <ProductsContainer />
     </div>
   )
