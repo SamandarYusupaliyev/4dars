@@ -12,7 +12,7 @@ export const loader = async ({ request }) => {
 
 const Products = () => {
   return(
-  <div className="mt-14">
+  <div className="align-content py-20">
     <Filters/>
     <ProductsContainer />
     </div>
