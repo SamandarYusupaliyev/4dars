@@ -1,21 +1,27 @@
-import Filters from "../components/Filters";
 import ProductsContainer from "../components/ProductsContainer";
 import { customFetch } from "../utils";
-const url = '/products'
-export const loader = async ({ request }) => {
-  const response = await customFetch(url)
-  const products = response.data.data
-  const meta = response.data.meta
-  console.log(products, meta);
-  return { products, meta }
-}
+import Filters from "../components/Filters";
+import PaginationContainer from "../components/PaginationContainer";
 
-const Products = () => {
-  return(
-  <div className="align-content py-20">
-    <Filters/>
-    <ProductsContainer />
-    </div>
-  )
+const url = "/products";
+
+export const loader = async ({ request }) => {
+  const response = await customFetch(url);
+  const params = Object.fromEntries([
+    ...new URL(request.url).searchParams.entries(),
+  ]);
+  const responseData = await customFetch(url, { params });
+  const products = responseData.data.data;
+  const meta = responseData.data.meta;
+  return { products, meta };
 };
+function Products() {
+  return (
+    <div className="align-content py-20">
+      <Filters/>
+      <ProductsContainer />
+      <PaginationContainer />
+    </div>
+  );
+}
 export default Products;
