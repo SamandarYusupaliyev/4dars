@@ -1,4 +1,8 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  Navigate,
+  RouterProvider,
+} from "react-router-dom";
 
 // pages
 import {
@@ -18,16 +22,33 @@ import {
 // components
 import { ErrorElement } from "./components";
 
-// Loaders
+// actions
+import { action as RegisterAction } from "./pages/Register";
+
+// redux
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
+
+// firebase
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "./firebase/firebaseConfig";
+import { authReady, login } from "./features/user/userSlice";
+
+// loaders
 import { loader as LandingLoader } from "./pages/Landing";
 import { loader as SingleProductLoader } from "./pages/SingleProduct";
-import { loader as ProductsLoader} from "./pages/Products";
+import { loader as ProductsLoader } from "./pages/Products";
 
 function App() {
+  const { user, authReadyState } = useSelector((state) => state.useState);
   const routers = createBrowserRouter([
     {
       path: "/",
-      element: <HomeLayout />,
+      element: (
+        <ProtectedRoutes user={user}>
+          <HomeLayout />
+        </ProtectedRoutes>
+      ),
       errorElement: <Error />,
       children: [
         {
@@ -43,11 +64,11 @@ function App() {
         {
           path: "/products",
           element: <Products />,
-          loader:ProductsLoader,
+          loader: ProductsLoader,
         },
         {
           path: "/products/:id",
-          element: <SingleProduct/>,
+          element: <SingleProduct />,
           loader: SingleProductLoader,
         },
         {
@@ -66,16 +87,27 @@ function App() {
     },
     {
       path: "/login",
-      element: <Login />,
+      element: user ? <Navigate to="/" /> : <Login />,
       errorElement: <Error />,
     },
     {
       path: "register",
-      element: <Register />,
+      element: user ? <Navigate to="/" /> : <Register />,
       errorElement: <Error />,
+      action: RegisterAction,
     },
   ]);
-  return <RouterProvider router={routers} />;
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      dispatch(login(user));
+      dispatch(authReady());
+    });
+  }, []);
+
+  return <>{authReady && <RouterProvider router={routers} />}</>;
 }
 
 export default App;
