@@ -1,5 +1,5 @@
-import { Link,Form } from "react-router-dom"
-import { FormInput,SubmitBtn } from "../components"
+import { Link,Form, useActionData } from "react-router-dom";
+import { FormInput,SubmitBtn } from "../components";
 
 import {useRegister} from "../hooks/userRegister";
 import { useEffect } from "react";
@@ -31,15 +31,15 @@ function Register() {
         <h4 className="text-3xl font-bold text-center mb-4">Register</h4>
         <FormInput 
         type="text" 
-        label="Display Name:"
-        name="displayName"
-        defaultvalue="user" 
+        label="Username:"
+        name="username"
+        // defaultvalue="user" 
         />
          <FormInput 
         type="url" 
         label="Photo URL:"
         name="photoURL"
-        defaultvalue="https://..." 
+        // defaultvalue="https://..." 
         />
         <FormInput 
         type="email" 
@@ -48,9 +48,9 @@ function Register() {
         defaultavlue ="test@gmail.com"
          />
         <FormInput 
-        type="email" 
-        label="Email:"
-        name="email"  
+        type="password" 
+        label="Password:"
+        name="password"  
         defaultavlue ="secret"
          />
       </div>
@@ -68,4 +68,4 @@ function Register() {
   )
  }
   
-export default Register
+  export default Register

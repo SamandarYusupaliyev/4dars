@@ -20,7 +20,7 @@ import {
 } from "./pages";
 
 // components
-import { ErrorElement } from "./components";
+import { ErrorElement,ProtectedRoutes } from "./components";
 
 // actions
 import { action as RegisterAction } from "./pages/Register";
@@ -39,8 +39,10 @@ import { loader as LandingLoader } from "./pages/Landing";
 import { loader as SingleProductLoader } from "./pages/SingleProduct";
 import { loader as ProductsLoader } from "./pages/Products";
 
+
+
 function App() {
-  const { user, authReadyState } = useSelector((state) => state.useState);
+  const { user, authReadyState } = useSelector((state) => state.userState);
   const routers = createBrowserRouter([
     {
       path: "/",
