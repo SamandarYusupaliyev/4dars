@@ -28,7 +28,7 @@ function SingleProduct() {
     image,
     title,
     price,
-    amount,
+    amount:Number(amount),
     productColor,
     company,
   }
@@ -61,14 +61,14 @@ function SingleProduct() {
               return <button key={color} className={`badge w-6 h-6 mr-2 ${color == productColor && "border-2 border-secondary"}`} style={{backgroundColor: color}} onClick={() => setProductColor(color)}></button>
             })}
           </div>
-          <div className="form-control w-full max-w-xs">
+          <div className="form-control w-full max-w-xs ">
             <label className="label">
               <h4 className="text-md font-medium tracking-wider capitalize">amount</h4>
             </label>
             <select className="select select-secondary select-bordered select-md" value={amount} onChange={(e) => setAmount(e.target.value)}>{generateAmountOptions(20)}</select>
           </div>
           {/* <div className="mt-10"><button onClick={() =>console.log("add to bag")} className="btn btn-secondary btn-md">Add to bag</button></div> */}
-          <div className="mt-10"><button onClick={addToCart} className="btn btn-secondary btn-md">Add to bag</button></div>
+         <div className="mt-10"><button onClick={addToCart} className="btn btn-secondary btn-md">Add to bag</button></div>  
         </div>
       </div>
     </section>
