@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import { formatPrice, generateAmountOptions } from "../utils";
 import { removeItem } from "../features/cart/cartSlice";
+import { editItem } from "../features/cart/cartSlice";
 
 
 function CartItem({cardItem}) {
